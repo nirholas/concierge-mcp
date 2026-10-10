@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@three-ws/concierge-mcp: Ask any website&#39;s AI concierge a grounded question, and generate the c</title>
+<meta name="description" content="Ask any website&#39;s AI concierge a grounded question, and generate the copy-paste embed code to add a three.ws Concierge (an AI chat widget with a 3D avatar) to a site.">
+<link rel="canonical" href="https://nirholas.github.io/concierge-mcp/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="three.ws">
+<meta property="og:title" content="@three-ws/concierge-mcp">
+<meta property="og:description" content="Ask any website&#39;s AI concierge a grounded question, and generate the copy-paste embed code to add a three.ws Concierge (an AI chat widget with a 3D avatar) to a site.">
+<meta property="og:url" content="https://nirholas.github.io/concierge-mcp/">
+<meta property="og:image" content="https://nirholas.github.io/concierge-mcp/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="@three-ws/concierge-mcp">
+<meta name="twitter:description" content="Ask any website&#39;s AI concierge a grounded question, and generate the copy-paste embed code to add a three.ws Concierge (an AI chat widget with a 3D avatar) to a site.">
+<meta name="twitter:image" content="https://nirholas.github.io/concierge-mcp/og.png">
+<meta name="keywords" content="mcp, model-context-protocol, three.ws, concierge, chatbot, chat-widget, support-chat, 3d, avatar, embed, ai-agent, mcp-server, ai-agents">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<link rel="icon" href="https://three.ws/three-ws-mcp-icon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"@three-ws/concierge-mcp","description":"Ask any website's AI concierge a grounded question, and generate the copy-paste embed code to add a three.ws Concierge (an AI chat widget with a 3D avatar) to a site.","codeRepository":"https://github.com/nirholas/concierge-mcp","programmingLanguage":"JavaScript","license":"https://spdx.org/licenses/Apache-2.0.html","version":"0.1.1","url":"https://nirholas.github.io/concierge-mcp/","author":{"@type":"Organization","name":"three.ws","url":"https://three.ws"},"keywords":"mcp, model-context-protocol, three.ws, concierge, chatbot, chat-widget, support-chat, 3d, avatar, embed, ai-agent, mcp-server, ai-agents"}</script>
+<style>:root{--bg:#fff;--fg:#111418;--mut:#586069;--line:#e3e6ea;--acc:#2563eb;--code:#f4f6f8;--card:#fafbfc}
+@media(prefers-color-scheme:dark){:root{--bg:#0b0d10;--fg:#e8eaed;--mut:#9aa3ad;--line:#232830;--acc:#6ea0ff;--code:#14181d;--card:#10141a}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--acc)}a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:4px}
+header.bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1100px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{font-weight:700;text-decoration:none;color:var(--fg)}
+.bar nav{margin-left:auto;display:flex;gap:16px;font-size:14px}
+.bar nav a{color:var(--mut);text-decoration:none;transition:color .15s}.bar nav a:hover{color:var(--fg)}
+.hero{max-width:1100px;margin:0 auto;padding:48px 16px 24px}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:0 0 12px;letter-spacing:-.02em}
+.hero p{color:var(--mut);max-width:70ch;font-size:18px;margin:0 0 24px}
+.install{display:flex;align-items:center;gap:8px;max-width:620px;background:var(--code);border:1px solid var(--line);border-radius:10px;padding:6px 6px 6px 14px}
+.install code{flex:1;overflow-x:auto;white-space:nowrap;font:14px ui-monospace,SFMono-Regular,Menlo,monospace}
+.install button{border:0;background:var(--acc);color:#fff;border-radius:7px;padding:8px 14px;font:600 13px system-ui;cursor:pointer;transition:transform .12s,opacity .12s}
+.install button:hover{opacity:.9}.install button:active{transform:scale(.96)}
+.cta{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.cta a{padding:9px 16px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;color:var(--fg);transition:border-color .15s,transform .15s}
+.cta a:hover{border-color:var(--acc);transform:translateY(-1px)}.cta a.pri{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.layout{max-width:1100px;margin:0 auto;padding:8px 16px 64px;display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:40px}
+@media(max-width:860px){.layout{grid-template-columns:minmax(0,1fr)}.toc{display:none}}
+.toc{position:sticky;top:76px;align-self:start;font-size:14px;border-left:1px solid var(--line);padding-left:16px}
+.toc p{margin:0 0 8px;font-weight:700;color:var(--mut);text-transform:uppercase;font-size:12px;letter-spacing:.06em}
+.toc ul{list-style:none;margin:0;padding:0}.toc li{margin:6px 0}.toc a{color:var(--mut);text-decoration:none}.toc a:hover{color:var(--fg)}
+main{min-width:0;overflow-wrap:anywhere}main pre code{overflow-wrap:normal}main img{max-width:100%;height:auto}
+main h2{margin-top:2.2em;padding-bottom:.3em;border-bottom:1px solid var(--line)}
+.anchor{margin-left:-1.1em;padding-right:.4em;text-decoration:none;opacity:0;color:var(--mut)}h2:hover .anchor,h3:hover .anchor,h4:hover .anchor{opacity:1}
+pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:14px;line-height:1.5}
+code{font:0.9em ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:.15em .35em;border-radius:5px}pre code{background:none;padding:0}
+table{border-collapse:collapse;display:block;overflow-x:auto;max-width:100%}th,td{border:1px solid var(--line);padding:8px 12px;text-align:left}th{background:var(--card)}
+blockquote{margin:1em 0;padding:.2em 1em;border-left:4px solid var(--line);color:var(--mut)}
+footer{border-top:1px solid var(--line);color:var(--mut);font-size:14px}
+.foot-in{max-width:1100px;margin:0 auto;padding:24px 16px;display:flex;gap:16px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}</style>
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+<a class="brand" href="https://nirholas.github.io/concierge-mcp/">@three-ws/concierge-mcp</a>
+<nav aria-label="Project links"><a href="https://github.com/nirholas/concierge-mcp">GitHub</a><a href="https://www.npmjs.com/package/@three-ws/concierge-mcp">npm</a><a href="llms.txt">llms.txt</a><a href="https://three.ws">three.ws</a></nav>
+</div></header>
+<section class="hero">
+<h1>@three-ws/concierge-mcp</h1>
+<p>Ask any website&#39;s AI concierge a grounded question, and generate the copy-paste embed code to add a three.ws Concierge (an AI chat widget with a 3D avatar) to a site.</p>
+<div class="install" role="group" aria-label="Install command"><code>npx -y @three-ws/concierge-mcp</code><button type="button" data-copy="npx -y @three-ws/concierge-mcp">Copy</button></div>
+<div class="cta"><a class="pri" href="https://github.com/nirholas/concierge-mcp">View on GitHub</a><a href="https://github.com/nirholas/concierge-mcp/stargazers">Star the repo</a><a href="https://registry.modelcontextprotocol.io/?q=io.github.nirholas%2Fconcierge-mcp">MCP Registry</a></div>
+</section>
+<div class="layout">
+<main id="content"><p align="center"><strong>Ask any website's AI concierge a grounded question, and generate the embed to add one to a site, from any AI assistant.</strong></p><p align="center">
+  <a href="https://www.npmjs.com/package/@three-ws/concierge-mcp"><img alt="npm" src="https://img.shields.io/npm/v/@three-ws/concierge-mcp?logo=npm&color=cb3837"></a>
+  <img alt="license" src="https://img.shields.io/npm/l/@three-ws/concierge-mcp?color=3b82f6">
+  <img alt="node" src="https://img.shields.io/node/v/@three-ws/concierge-mcp?color=339933&logo=node.js">
+  <a href="https://registry.modelcontextprotocol.io/?q=io.github.nirholas"><img alt="MCP Registry" src="https://img.shields.io/badge/MCP%20Registry-io.github.nirholas-0ea5e9"></a>
+  <a href="https://three.ws/concierge"><img alt="three.ws" src="https://img.shields.io/badge/built%20by-three.ws-000"></a>
+</p><hr>
+<blockquote>
+<p>A <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server that puts the <a href="https://three.ws/concierge">three.ws Concierge</a>, the embeddable AI chat widget with a talking 3D avatar, in reach of any AI assistant over stdio.</p>
+</blockquote>
+<p>Three tools:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it does</th>
+<th>Network</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong><code>concierge_ask</code></strong></td>
+<td>Ask a website&#39;s AI concierge a question. Give it a <code>url</code> and it fetches that page and answers grounded in the real content (title, headings, nav, main text), the way to <em>ask any website a question</em>. Or pass <code>knowledge</code>/<code>content</code> to answer from text you already have.</td>
+<td>Free three.ws lane + fetches the URL</td>
+</tr>
+<tr>
+<td><strong><code>concierge_embed</code></strong></td>
+<td>Generate ready-to-paste embed code that adds a Concierge to a website: the one-tag <code>&lt;script&gt;</code>, the <code>&lt;three-concierge&gt;</code> web component, an npm snippet, or an imperative <code>mount()</code> call, configured with accent, avatar, greeting, curated knowledge, and suggested prompts.</td>
+<td>Offline</td>
+</tr>
+<tr>
+<td><strong><code>concierge_avatars</code></strong></td>
+<td>List the rigged 3D avatars a Concierge can wear.</td>
+<td>Offline</td>
+</tr>
+</tbody></table>
+<p>No API key, no signer, no payment. <code>concierge_ask</code> runs on the public, free <code>POST /api/concierge</code> answer lane; the other two are pure local generators.</p>
+<h2 id="install"><a class="anchor" href="#install" aria-label="Link to this section">#</a>Install</h2>
+<pre><code class="language-bash">npm install @three-ws/concierge-mcp
+</code></pre>
+<p>Or run with <code>npx</code> (no install):</p>
+<pre><code class="language-bash">npx @three-ws/concierge-mcp
+</code></pre>
+<h2 id="quick-start"><a class="anchor" href="#quick-start" aria-label="Link to this section">#</a>Quick start</h2>
+<p><strong>Claude Code</strong>, one line:</p>
+<pre><code class="language-bash">claude mcp add concierge -- npx -y @three-ws/concierge-mcp
+</code></pre>
+<p><strong>Claude Desktop / Cursor</strong> (<code>claude_desktop_config.json</code> or <code>mcp.json</code>):</p>
+<pre><code class="language-json">{
+	&quot;mcpServers&quot;: {
+		&quot;concierge&quot;: {
+			&quot;command&quot;: &quot;npx&quot;,
+			&quot;args&quot;: [&quot;-y&quot;, &quot;@three-ws/concierge-mcp&quot;]
+		}
+	}
+}
+</code></pre>
+<p>Inspect the surface with the MCP Inspector:</p>
+<pre><code class="language-bash">npx -y @modelcontextprotocol/inspector npx -y @three-ws/concierge-mcp
+</code></pre>
+<h2 id="what-you-can-do-with-it"><a class="anchor" href="#what-you-can-do-with-it" aria-label="Link to this section">#</a>What you can do with it</h2>
+<p><strong>Ask any website a question, grounded in its real content:</strong></p>
+<blockquote>
+<p>Use concierge_ask to answer &quot;what does the Pro plan include?&quot; from <a href="https://example.com/pricing">https://example.com/pricing</a></p>
+</blockquote>
+<p>The server fetches the page, harvests its readable text, sends it to the concierge answer engine, and returns an answer that is told not to invent anything the page doesn&#39;t say.</p>
+<p><strong>Ask from text you already have (no URL):</strong></p>
+<blockquote>
+<p>concierge_ask: question = &quot;what&#39;s the refund window?&quot;, knowledge = &quot;Returns accepted within 30 days.&quot;</p>
+</blockquote>
+<p><strong>Generate a copy-paste embed for a site:</strong></p>
+<blockquote>
+<p>Use concierge_embed for siteName &quot;Acme&quot;, accent &quot;#f97316&quot;, avatar &quot;nova&quot;, suggestions [&quot;What is Acme?&quot;, &quot;Pricing?&quot;], flavor &quot;script&quot;</p>
+</blockquote>
+<p>Returns the exact <code>&lt;script&gt;</code> tag to drop into the site&#39;s HTML.</p>
+<p><strong>Pick an avatar first:</strong></p>
+<blockquote>
+<p>concierge_avatars → then use the id you like as concierge_embed&#39;s <code>avatar</code></p>
+</blockquote>
+<h2 id="tools-in-detail"><a class="anchor" href="#tools-in-detail" aria-label="Link to this section">#</a>Tools in detail</h2>
+<h3 id="conciergeask"><a class="anchor" href="#conciergeask" aria-label="Link to this section">#</a><code>concierge_ask</code></h3>
+<p>Read-only, open-world.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>question</code></td>
+<td>string (required)</td>
+<td>The question, in natural language.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string (url)</td>
+<td>A page to ground the answer in. Fetched + harvested.</td>
+</tr>
+<tr>
+<td><code>siteName</code></td>
+<td>string</td>
+<td>Display name; inferred from the page when omitted.</td>
+</tr>
+<tr>
+<td><code>knowledge</code></td>
+<td>string</td>
+<td>Curated authoritative facts. Leads over harvested text.</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td>string</td>
+<td>Raw text to ground in when you pass no <code>url</code>.</td>
+</tr>
+<tr>
+<td><code>persona</code></td>
+<td>string</td>
+<td>Tone instruction for the reply.</td>
+</tr>
+<tr>
+<td><code>lang</code></td>
+<td>string</td>
+<td>BCP-47 hint, e.g. <code>en</code>, <code>es</code>.</td>
+</tr>
+</tbody></table>
+<p>At least one of <code>url</code>, <code>knowledge</code>, or <code>content</code> is required. Returns <code>{ ok, question, answer, grounded_in, provider, model, endpoint }</code>.</p>
+<h3 id="conciergeembed"><a class="anchor" href="#conciergeembed" aria-label="Link to this section">#</a><code>concierge_embed</code></h3>
+<p>Read-only, idempotent, offline.</p>
+<p>Key parameters: <code>siteName</code>, <code>flavor</code> (<code>script</code> | <code>web-component</code> | <code>npm</code> | <code>imperative</code> | <code>all</code>, default <code>all</code>), <code>accent</code>, <code>avatar</code>, <code>customAvatar</code>, <code>position</code>, <code>theme</code>, <code>greeting</code>, <code>persona</code>, <code>knowledge</code>, <code>suggestions[]</code>, <code>endpoint</code>, <code>muted</code>, <code>open</code>, <code>noPicker</code>, <code>noTeaser</code>, <code>lang</code>. Returns <code>{ ok, flavor, snippets, applied_config, docs }</code>. The <code>script</code>, <code>web-component</code>, and <code>imperative</code> snippets are all plain-HTML paste-ready (they load the CDN global build); the <code>npm</code> snippet is for bundler users.</p>
+<h3 id="conciergeavatars"><a class="anchor" href="#conciergeavatars" aria-label="Link to this section">#</a><code>concierge_avatars</code></h3>
+<p>Read-only, idempotent, offline. No parameters. Returns <code>{ ok, default, count, avatars, note }</code>, each avatar carrying <code>id</code>, <code>name</code>, <code>tagline</code>, <code>style</code>, and <code>framing</code>.</p>
+<h2 id="configuration"><a class="anchor" href="#configuration" aria-label="Link to this section">#</a>Configuration</h2>
+<p>All optional environment variables:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>THREE_WS_BASE</code></td>
+<td><code>https://three.ws</code></td>
+<td>API origin for the answer call + the origin the embed snippets point at.</td>
+</tr>
+<tr>
+<td><code>THREE_WS_TIMEOUT_MS</code></td>
+<td><code>45000</code></td>
+<td>Timeout for the concierge answer (it may fail over across LLM providers).</td>
+</tr>
+<tr>
+<td><code>CONCIERGE_PAGE_TIMEOUT_MS</code></td>
+<td><code>12000</code></td>
+<td>Timeout for fetching a page in <code>concierge_ask</code>.</td>
+</tr>
+</tbody></table>
+<h2 id="errors"><a class="anchor" href="#errors" aria-label="Link to this section">#</a>Errors</h2>
+<p>A failed tool call returns an MCP error result (<code>isError: true</code>) whose text is a single JSON object: <code>{ &quot;ok&quot;: false, &quot;error&quot;: &quot;&lt;code&gt;&quot;, &quot;message&quot;: &quot;…&quot; }</code>, plus <code>status</code> on upstream rejections:</p>
+<table>
+<thead>
+<tr>
+<th><code>error</code></th>
+<th>Meaning</th>
+<th>Recovery</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>bad_request</code></td>
+<td>Bad arguments: no <code>url</code>/<code>knowledge</code>/<code>content</code> on <code>concierge_ask</code>, a non-http(s) <code>url</code>, or an unknown <code>avatar</code> id.</td>
+<td>Fix the call.</td>
+</tr>
+<tr>
+<td><code>unsupported_media</code></td>
+<td>The fetched <code>url</code> is not an HTML/text page.</td>
+<td>Point at a readable page, or pass <code>content</code>.</td>
+</tr>
+<tr>
+<td><code>upstream_error</code></td>
+<td>The answer endpoint rejected the request; <code>status</code> carries the HTTP code (<code>429</code> = the free lane&#39;s IP rate limit).</td>
+<td>Act on <code>status</code>; back off on <code>429</code>.</td>
+</tr>
+<tr>
+<td><code>stream_error</code></td>
+<td>The answer stream failed before completing.</td>
+<td>Retry.</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>No answer within <code>THREE_WS_TIMEOUT_MS</code>, or the page fetch outran <code>CONCIERGE_PAGE_TIMEOUT_MS</code>.</td>
+<td>Retry or raise the timeout.</td>
+</tr>
+<tr>
+<td><code>network_error</code></td>
+<td>The request never reached the API (DNS, offline, TLS).</td>
+<td>Check connectivity / <code>THREE_WS_BASE</code>.</td>
+</tr>
+<tr>
+<td><code>bad_config</code></td>
+<td><code>THREE_WS_TIMEOUT_MS</code> is not a positive number. Thrown while the server starts (module load), so the process exits before serving.</td>
+<td>Fix the env var.</td>
+</tr>
+</tbody></table>
+<h2 id="how-it-relates-to-the-widget"><a class="anchor" href="#how-it-relates-to-the-widget" aria-label="Link to this section">#</a>How it relates to the widget</h2>
+<p>This server is the agent-facing side of <a href="https://www.npmjs.com/package/@three-ws/concierge"><code>@three-ws/concierge</code></a>, the browser widget. Same answer engine, same avatar catalog, same grounding model, exposed as MCP tools so an assistant can <em>use</em> a site&#39;s concierge or <em>install</em> one, not just a human visitor.</p>
+<ul>
+<li>Widget + docs: <a href="https://three.ws/concierge">three.ws/concierge</a></li>
+<li>Reference docs: <a href="https://three.ws/docs/concierge">three.ws/docs/concierge</a></li>
+<li>Build tutorial: <a href="https://three.ws/docs/tutorials/build-a-site-concierge">three.ws/docs/tutorials/build-a-site-concierge</a></li>
+</ul>
+<h2 id="develop"><a class="anchor" href="#develop" aria-label="Link to this section">#</a>Develop</h2>
+<pre><code class="language-bash">npm test    # node --test, offline (registration, harvest, embed, SSE parsing)
+npm start   # run the server over stdio
+</code></pre>
+<p>A live end-to-end check against a running three.ws (<code>test/_manual-e2e.mjs</code>) drives all three tools through a real stdio client; see the file header to run it.</p>
+<h2 id="license"><a class="anchor" href="#license" aria-label="Link to this section">#</a>License</h2>
+<p>Apache-2.0. See <a href="https://github.com/nirholas/concierge-mcp/blob/main/LICENSE">LICENSE</a>. Free to run against the public three.ws API.</p>
+</main>
+<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li><a href="#install">Install</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do-with-it">What you can do with it</a></li><li><a href="#tools-in-detail">Tools in detail</a></li><li><a href="#configuration">Configuration</a></li><li><a href="#errors">Errors</a></li><li><a href="#how-it-relates-to-the-widget">How it relates to the widget</a></li><li><a href="#develop">Develop</a></li><li><a href="#license">License</a></li></ul></nav>
+</div>
+<footer><div class="foot-in"><span>Apache-2.0 licensed</span><a href="https://github.com/nirholas/concierge-mcp/issues">Issues</a><a href="https://github.com/nirholas/concierge-mcp/blob/main/CONTRIBUTING.md">Contributing</a><a href="https://github.com/nirholas/concierge-mcp/security/policy">Security</a><a href="https://three.ws">Part of three.ws</a></div></footer>
+<script>document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+var t=b.getAttribute('data-copy');var done=function(){var o=b.textContent;b.textContent='Copied';setTimeout(function(){b.textContent=o},1400)};
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){})}
+else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}a.remove()}})});</script>
+</body>
+</html>

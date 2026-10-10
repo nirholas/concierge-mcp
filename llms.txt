@@ -1,0 +1,20 @@
+# @three-ws/concierge-mcp
+
+> Ask any website's AI concierge a grounded question, and generate the copy-paste embed code to add a three.ws Concierge (an AI chat widget with a 3D avatar) to a site. concierge_ask fetches a page and answers from its real content; concierge_embed builds the one-tag install; concierge_avatars lists the avatars. No key, no signer, no payment.
+
+@three-ws/concierge-mcp is a Model Context Protocol server from three.ws. Install: `npx -y @three-ws/concierge-mcp`.
+
+## Docs
+
+- [README](https://github.com/nirholas/concierge-mcp/blob/main/README.md): install, configuration, full reference
+- [Documentation site](https://nirholas.github.io/concierge-mcp/): the README as a web page
+- [Full text for LLMs](https://nirholas.github.io/concierge-mcp/llms-full.txt): README inlined
+- [AGENTS.md](https://github.com/nirholas/concierge-mcp/blob/main/AGENTS.md): guidance for coding agents
+
+## Project
+
+- [Source](https://github.com/nirholas/concierge-mcp)
+- [npm](https://www.npmjs.com/package/@three-ws/concierge-mcp)
+- [three.ws](https://three.ws): the platform this is part of
+- [Issues](https://github.com/nirholas/concierge-mcp/issues)
+- [MCP Registry](https://registry.modelcontextprotocol.io/?q=io.github.nirholas%2Fconcierge-mcp)
